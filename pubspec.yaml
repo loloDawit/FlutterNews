@@ -23,8 +23,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
+  flutter_webview_plugin: ^0.2.0+3
+  share: ^0.5.3
+  timeago: ^2.0.8
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 

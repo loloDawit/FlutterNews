@@ -29,7 +29,6 @@ class NewsApiResponse {
 
 class Articles {
   Source source;
-  Null author;
   String title;
   String description;
   String url;
@@ -39,7 +38,6 @@ class Articles {
 
   Articles(
       {this.source,
-      this.author,
       this.title,
       this.description,
       this.url,
@@ -50,7 +48,7 @@ class Articles {
   Articles.fromJson(Map<String, dynamic> json) {
     source =
         json['source'] != null ? new Source.fromJson(json['source']) : null;
-    author = json['author'];
+   // author = json['author'];
     title = json['title'];
     description = json['description'];
     url = json['url'];
@@ -64,7 +62,7 @@ class Articles {
     if (this.source != null) {
       data['source'] = this.source.toJson();
     }
-    data['author'] = this.author;
+    //data['author'] = this.author;
     data['title'] = this.title;
     data['description'] = this.description;
     data['url'] = this.url;

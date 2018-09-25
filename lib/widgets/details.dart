@@ -25,12 +25,13 @@ class DetailsPage extends StatelessWidget {
                     Hero(
                       tag: article.urlToImage,
                       child: Container(
-                        height: 100.0,
+                        height: 400.0,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
                           shape: BoxShape.rectangle,
                           image: DecorationImage(
-                              image: NetworkImage("${article.urlToImage}"),
+                              image: NetworkImage("${article.urlToImage}"
+                              ),
                               fit: BoxFit.cover),
                         ),
                       ),
@@ -40,7 +41,7 @@ class DetailsPage extends StatelessWidget {
                     ),
                     Text(
                       article.title,
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.title, softWrap:true ,
                     ),
                     SizedBox(
                       height: 16.0,
