@@ -3,6 +3,7 @@
 News app which is developed using flutter and powered by newsapi.
 
 # Preview
+![screen shot 2018-09-25 at 6 17 06 pm](https://user-images.githubusercontent.com/16858570/46051666-57597f80-c0ef-11e8-9635-9c852ae905ce.png)
 
 |  |
 | ------------------ |
