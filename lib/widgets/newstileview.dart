@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../widgets/detailsview.dart';
 import '../model/newsapiresponse.dart';
@@ -34,7 +36,7 @@ class ArticleItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Hero(
-          tag: article.urlToImage,
+          tag:_randonNum().toString()+article.urlToImage,
           child: Container(
             height: 200.0,
             decoration: BoxDecoration(
@@ -85,5 +87,12 @@ class ArticleItem extends StatelessWidget {
         ),
       ],
     );
+  }
+  _randonNum(){
+    var rnum = new Random();
+    for(int i=0; i<100;i++){
+      return rnum.nextInt(100);
+    }
+    return rnum.toString();
   }
 }

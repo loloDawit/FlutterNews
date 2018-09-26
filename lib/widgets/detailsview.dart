@@ -1,6 +1,10 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../model/newsapiresponse.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatelessWidget {
   final Articles article;
@@ -24,7 +28,7 @@ class DetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Hero(
-                      tag: article.urlToImage,
+                      tag:_randonNum().toString()+ article.urlToImage,
                       child: Container(
                         height: 400.0,
                         decoration: BoxDecoration(
@@ -48,12 +52,18 @@ class DetailsPage extends StatelessWidget {
                     SizedBox(
                       height: 12.0,
                     ),
-                    Text(
-                      article.description,
-                      style: TextStyle(
-                        fontSize: 12.0,
+                    FlatButton(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        article.description + '...read more',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                        ),
                       ),
-                    ),
+                      onPressed: () {
+                        _launchURL(article.url);
+                      },
+                    )
                   ],
                 ),
               )
@@ -62,5 +72,28 @@ class DetailsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: true, forceWebView: true);
+    } else {
+      print('error');
+    }
+  }
+
+  Future _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: true, forceWebView: true);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+   _randonNum(){
+    var rnum = new Random();
+    for(int i=0; i<100;i++){
+      return rnum.nextInt(100);
+    }
+    return rnum.toString();
   }
 }
