@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../model/newsapiresponse.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share/share.dart';
 
 class DetailsPage extends StatelessWidget {
   final Articles article;
@@ -75,14 +76,16 @@ class DetailsPage extends StatelessWidget {
     );
   }
 
-  Future launchURL(String url) async {
+  launchURL( url) async {
     if (await canLaunch(url)) {
       await launch(url, forceSafariVC: true, forceWebView: true);
     } else {
       print('error');
     }
   }
-
+  Future shareNotice() async{
+    await Share.share('${article.title}:\n${article.url}');
+  }
   Future _launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url, forceSafariVC: true, forceWebView: true);

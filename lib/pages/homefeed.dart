@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import '../widgets/btmnavigation.dart';
 import '../widgets/newstileview.dart';
 import '../model/newsapiresponse.dart';
 import 'package:http/http.dart' as http;
@@ -19,7 +20,7 @@ class _HomePageFeed extends State<HomePageFeed> {
   String url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=' +
       NewsApi.apiKey;
   NewsApiResponse article;
-
+  int _curIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -29,24 +30,26 @@ class _HomePageFeed extends State<HomePageFeed> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
-        ),
-        body: article == null
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : RefreshIndicator(
-                child: ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    return ArticleItem(
-                      article: article.articles[index],
-                    );
-                  },
-                  itemCount: article.articles.length,
-                ),
-                onRefresh: _handleRefresh,
-              ));
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: article == null
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : RefreshIndicator(
+              child: ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+                  return ArticleItem(
+                    article: article.articles[index],
+                  );
+                },
+                itemCount: article.articles.length,
+              ),
+              onRefresh: _handleRefresh,
+            ),
+      bottomNavigationBar: new BottomNavigation(onTabTapped),
+    );
   }
 
   void fetchNews() async {
@@ -67,5 +70,13 @@ class _HomePageFeed extends State<HomePageFeed> {
       fetchNews();
     });
     return null;
+  }
+
+  onTabTapped(int index) {
+    if (index != _curIndex) {
+      setState(() {
+        _curIndex = index;
+      });
+    }
   }
 }
