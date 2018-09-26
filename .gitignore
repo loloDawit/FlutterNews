@@ -8,4 +8,4 @@ build/
 
 .flutter-plugins
 
-newsapi.dart
+apiConfig.dart

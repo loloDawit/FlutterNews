@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/details.dart';
+import '../widgets/detailsview.dart';
 import '../model/newsapiresponse.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ArticleItem extends StatelessWidget {
   final Articles article;
@@ -52,17 +53,33 @@ class ArticleItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 article.title,
-                maxLines: 2,
+                maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.title, 
+                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
               ),
               Text(
-                article.description,
+                article.description == null
+                    ? 'No description provided by source'
+                    : article.description,
                 softWrap: true,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: new TextStyle( fontSize: 11.0, color: Colors.black.withOpacity(0.6)), 
+                style: new TextStyle(
+                    fontSize: 11.0, color: Colors.black.withOpacity(0.6)),
               ),
+              Row(
+                children: <Widget>[
+                  Text(timeago.format(DateTime.parse(article.publishedAt)), style: TextStyle( fontSize: 10.0),),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text(
+                    'source:' + article.source.name,
+                    style: TextStyle(fontSize: 10.0),
+                  ),
+                ],
+                
+              )
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/newsapiresponse.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class DetailsPage extends StatelessWidget {
   final Articles article;
@@ -14,7 +15,7 @@ class DetailsPage extends StatelessWidget {
           child: Icon(Icons.bookmark_border),
         ),
         body: Scaffold(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white30,
           body: ListView(
             children: <Widget>[
               Padding(
@@ -30,8 +31,7 @@ class DetailsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16.0),
                           shape: BoxShape.rectangle,
                           image: DecorationImage(
-                              image: NetworkImage("${article.urlToImage}"
-                              ),
+                              image: NetworkImage("${article.urlToImage}"),
                               fit: BoxFit.cover),
                         ),
                       ),
@@ -41,14 +41,18 @@ class DetailsPage extends StatelessWidget {
                     ),
                     Text(
                       article.title,
-                      style: Theme.of(context).textTheme.title, softWrap:true ,
+                      style: Theme.of(context).textTheme.title,
+                      softWrap: true,
                     ),
+                    Text(timeago.format(DateTime.parse(article.publishedAt))),
                     SizedBox(
-                      height: 16.0,
+                      height: 12.0,
                     ),
                     Text(
                       article.description,
-                      style: Theme.of(context).textTheme.subhead,
+                      style: TextStyle(
+                        fontSize: 12.0,
+                      ),
                     ),
                   ],
                 ),

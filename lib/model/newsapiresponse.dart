@@ -50,9 +50,9 @@ class Articles {
         json['source'] != null ? new Source.fromJson(json['source']) : null;
    // author = json['author'];
     title = json['title'];
-    description = json['description'];
+    description = json['description'] == null ? 'No description provided my source.': json['description'];
     url = json['url'];
-    urlToImage = json['urlToImage'];
+    urlToImage = json['urlToImage'] == null ? 'https://cdn.pixabay.com/photo/2015/12/03/10/12/news-1074604_960_720.jpg': json['urlToImage'];
     publishedAt = json['publishedAt'];
     content = json['content'];
   }

@@ -33,12 +33,13 @@ class _HomePageFeed extends State<HomePageFeed> {
       ),
       body: article == null
           ? Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(), 
             )
           : ListView.builder(
               itemBuilder: (BuildContext context, int index) {
                 return ArticleItem(
-                  article: article.articles[index],);
+                  article: article.articles[index],
+                );
               },
               itemCount: article.articles.length,
             ),
@@ -46,12 +47,14 @@ class _HomePageFeed extends State<HomePageFeed> {
   }
 
   void fetchNews() async {
-    var response = await http.get(url);
-    var decodedJson = jsonDecode(response.body);
-    print(article);
-    print(response.body);
-    setState(() {
-      article = NewsApiResponse.fromJson(decodedJson);
-    });
+    try {
+      var response = await http.get(url);
+      var decodedJson = jsonDecode(response.body);
+      setState(() {
+        article = NewsApiResponse.fromJson(decodedJson);
+      });
+    } on Exception catch (exp) {
+      print(exp);
+    }
   }
 }
