@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -28,22 +29,24 @@ class _HomePageFeed extends State<HomePageFeed> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-      body: article == null
-          ? Center(
-              child: CircularProgressIndicator(), 
-            )
-          : ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return ArticleItem(
-                  article: article.articles[index],
-                );
-              },
-              itemCount: article.articles.length,
-            ),
-    );
+        appBar: new AppBar(
+          title: new Text(widget.title),
+        ),
+        body: article == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : RefreshIndicator(
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return ArticleItem(
+                      article: article.articles[index],
+                    );
+                  },
+                  itemCount: article.articles.length,
+                ),
+                onRefresh: _handleRefresh,
+              ));
   }
 
   void fetchNews() async {
@@ -56,5 +59,13 @@ class _HomePageFeed extends State<HomePageFeed> {
     } on Exception catch (exp) {
       print(exp);
     }
+  }
+
+  Future<Null> _handleRefresh() async {
+    await new Future.delayed(new Duration(seconds: 3));
+    setState(() {
+      fetchNews();
+    });
+    return null;
   }
 }

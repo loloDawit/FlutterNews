@@ -56,6 +56,7 @@ class DetailsPage extends StatelessWidget {
                       padding: EdgeInsets.all(10.0),
                       child: Text(
                         article.description + '...read more',
+                        maxLines: 5,
                         style: TextStyle(
                           fontSize: 12.0,
                         ),
