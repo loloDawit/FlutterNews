@@ -1,4 +1,4 @@
-# newsapi
+# newsapi  [![Build Status](https://travis-ci.com/loloDawit/FlutterNews.svg?branch=master)](https://travis-ci.com/loloDawit/FlutterNews)
 
 News app which is developed using flutter and powered by newsapi.
 
