@@ -28,12 +28,14 @@ class _HomePageFeed extends State<HomePageFeed> {
     super.initState();
     fetchNews();
   }
-   @override
+
+  @override
   void dispose() {
     // Clean up the controller when the Widget is disposed
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -48,7 +50,11 @@ class _HomePageFeed extends State<HomePageFeed> {
                 controller: _controller,
                 onSubmitted: onSubmit,
                 decoration: InputDecoration(
-                    hintText: 'Search for news here', icon: Icon(Icons.search)),
+                    hintText: 'Search for news here',
+                    icon: Icon(Icons.search),
+                    fillColor: Colors.grey[300],
+                    filled: true),
+                autofocus: true,
               ),
             ),
           ),

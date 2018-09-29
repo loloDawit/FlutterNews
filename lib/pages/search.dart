@@ -18,7 +18,7 @@ class SearchResultsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _SearchResultsPage();
+  State<StatefulWidget> createState() => _SearchResultsPage( searchQuery: this.searchQuery);
 }
 
 class _SearchResultsPage extends State<SearchResultsPage> {
@@ -171,21 +171,21 @@ class _SearchResultsPage extends State<SearchResultsPage> {
                                                   article.articles[index].url);
                                             },
                                           ),
-                                          new GestureDetector(
-                                            child: new Padding(
-                                                padding:
-                                                    new EdgeInsets.all(5.0),
-                                                child: _hasArticle(
-                                                        article.articles[index])
-                                                    ? buildButtonColumn(
-                                                        Icons.bookmark)
-                                                    : buildButtonColumn(
-                                                        Icons.bookmark_border)),
-                                            onTap: () {
-                                              _onBookmarkTap(
-                                                  article.articles[index]);
-                                            },
-                                          ),
+                                          // new GestureDetector(
+                                          //   child: new Padding(
+                                          //       padding:
+                                          //           new EdgeInsets.all(5.0),
+                                          //       child: _hasArticle(
+                                          //               article.articles[index])
+                                          //           ? buildButtonColumn(
+                                          //               Icons.bookmark)
+                                          //           : buildButtonColumn(
+                                          //               Icons.bookmark_border)),
+                                          //   onTap: () {
+                                          //     _onBookmarkTap(
+                                          //         article.articles[index]);
+                                          //   },
+                                          // ),
                                         ],
                                       )
                                     ],
