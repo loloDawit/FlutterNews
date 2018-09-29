@@ -28,11 +28,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ),
         new BottomNavigationBarItem(
             icon: const Icon(Icons.list),
-            title: Text('Search'),
+            title: Text('Source'),
             backgroundColor: Colors.blue[800]
         ),
         new BottomNavigationBarItem(
-            icon: const Icon(Icons.info),
+            icon: const Icon(Icons.bookmark_border),
             title: Text('Bookmark'),
             backgroundColor: Colors.blue
         )

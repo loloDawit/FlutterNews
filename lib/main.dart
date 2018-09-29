@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/homefeed.dart';
+import './pages/home.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: new HomePageFeed(title: 'Flutter Demo Home Page'),
+      home: new LandingPage(title: 'Flutter Demo Home Page'),
     );
   }
 }

@@ -5,9 +5,9 @@ import '../widgets/detailsview.dart';
 import '../model/newsapiresponse.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class ArticleItem extends StatelessWidget {
+class ArticleListItem extends StatelessWidget {
   final Articles article;
-  ArticleItem({@required this.article});
+  ArticleListItem({@required this.article});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -16,7 +16,7 @@ class ArticleItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       elevation: 8.0,
-      margin: EdgeInsets.all(16.0),
+      margin: EdgeInsets.all(5.0),
       child: InkWell(
         radius: 8.0,
         child: _getCardView(context),
