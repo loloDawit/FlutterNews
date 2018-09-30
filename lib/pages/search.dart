@@ -23,6 +23,7 @@ class SearchResultsPage extends StatefulWidget {
 
 class _SearchResultsPage extends State<SearchResultsPage> {
   _SearchResultsPage({this.searchQuery});
+ 
   var searchQuery;
   NewsApiResponse article;
   int _curIndex = 0;
@@ -171,21 +172,6 @@ class _SearchResultsPage extends State<SearchResultsPage> {
                                                   article.articles[index].url);
                                             },
                                           ),
-                                          // new GestureDetector(
-                                          //   child: new Padding(
-                                          //       padding:
-                                          //           new EdgeInsets.all(5.0),
-                                          //       child: _hasArticle(
-                                          //               article.articles[index])
-                                          //           ? buildButtonColumn(
-                                          //               Icons.bookmark)
-                                          //           : buildButtonColumn(
-                                          //               Icons.bookmark_border)),
-                                          //   onTap: () {
-                                          //     _onBookmarkTap(
-                                          //         article.articles[index]);
-                                          //   },
-                                          // ),
                                         ],
                                       )
                                     ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/homefeed.dart';
 import '../pages/about.dart';
-import '../pages/contentnews.dart';
+import '../pages/newssource.dart';
 import '../widgets/btmnavigation.dart';
 
 class LandingPage extends StatefulWidget {
@@ -46,7 +46,7 @@ class _LandingPage extends State<LandingPage> with TickerProviderStateMixin {
         content = new HomePageFeed();
         break;
       case 1:
-        content = new ContentNewsPage();
+        content = new SourcesPage();
         break;
       default:
         {
